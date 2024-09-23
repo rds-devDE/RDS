@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="information.css" rel="stylesheet">
+    <title>Information</title>
+    <link href="icon.png" rel="Icon">
+</head>
+<body>
+    <div id="headline">
+        <h1>RDS (Remote Desktop Services)</h1>
+    </div>
+    <div class="Teiler"></div>
+        <div id="Header">
+            <div class="github">
+                <a target="_blank" href="https://github.com/rds-devDE"><img src="github-mark.svg"></a>
+                <p>GitHub</p>
+            </div>
+        </div>
+    <div class="Teiler"></div>
+    <h2>Aufbau:</h2>
+        <div>
+            <ul id="Aufbau">
+                <li id="Titel">Hyper-V</li>
+                    <ul id="Liste">
+                        <li>
+                            <table> 
+                            <tr>
+                                <th>Server</th>
+                                <th>IP</th>
+                                <th>CPU (Kerne)</th>
+                                <th>RAM (GByte)</th>
+                            </tr>
+                            <tr id="tr_hyper">
+                                <td>Hyper-V Server</td>
+                                <td>192.168.0.100</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr> 
+                            <tr>
+                                <td>Domain Controller</td>
+                                <td>192.168.0.101</td>
+                                <td>2</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>RD Gateway</td>
+                                <td>192.168.0.111</td>
+                                <td>1</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>RD Connection Broker</td>
+                                <td>192.168.0.112</td>
+                                <td>2</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>RD Licensing</td>
+                                <td>192.168.0.113</td>
+                                <td>1</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>RD Web Access</td>
+                                <td>192.168.0.114</td>
+                                <td>1</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>RD Session Host 1</td>
+                                <td>192.168.0.115</td>
+                                <td>2</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>RD Session Host 2</td>
+                                <td>192.168.0.116</td>
+                                <td>2</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>File Server</td>
+                                <td>192.168.0.121</td>
+                                <td>1</td>
+                                <td>2</td>
+                            </tr>
+                            <tr id="tr_gesamt">
+                                <td>Nutzung / Gesamt</td>
+                                <td>-</td>
+                                <td>12 / 12</td>
+                                <td>24 / 32</td>
+                            </tr>
+                            </table>
+                        </li>
+                    </ul>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li id="Titel">Netzwerk</li>
+                    <ul id="Liste">
+                        <li>Gateway 192.168.0.1</li>
+                        <li>Netmask 192.168.0.0/24</li>
+                        <li>DNS 192.168.0.101</li>
+                        <li>DHCP 192.168.0.2 - 192.168.0.99</li>
+                        <li><a target="_blank" href="Flow.png"><img src="Flow.png" alt="Connection Flow"></a></li>
+                        <li><a target="_blank" href="Aufbau.png"><img src="Aufbau.png" alt="Network Infrastructure"></a></li>
+                    </ul>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
