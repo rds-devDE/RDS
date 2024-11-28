@@ -9,7 +9,7 @@ $Bot = [int](Read-Host "Nummer des ersten Bots")
 $Buchstaben = 'abcdefghijklmnopqrstuvwxyz'
 $GroBuchstaben = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 $Zahlen = '0123456789'
-$Sonder = '!@#$%^&*()_+{}|:<>?'
+$Sonder = '!@#$%&()_+{}:<>?'
 $Zeichen = $Buchstaben + $GroBuchstaben + $Zahlen + $Sonder
 
 # Join jeweils ein Zeichen der verschiedenen Kategoriern und fülle den Rest auf (5 Zeichen) 
@@ -39,12 +39,12 @@ for ($i = 1; $i -le $Anzahl; $i++) {
 
     New-ADUser -Name $Name `
                -AccountPassword $SecurePassword `
-               -UserPrincipalName "$Name@rds-lab.de" `
+               -UserPrincipalName "$Name@domain.de" `
                -SamAccountName $Name `
                -Enabled $true `
                -PasswordNeverExpires $true `
                -ChangePasswordAtLogon $false `
-               -Path "OU=,DC=,DC=" 
+               -Path "OU=Domain User,DC=domain,DC=de" 
 
     Write-Host "Created user $Name with password: $password"
 }
