@@ -3,7 +3,7 @@ $GpoAutomaticUpdates = "Automatische Windows Updates"
 $GpoSSOforRDS = "SSO fuer RDS"
 
 # GPOs erstellen
-New-GPO -Name $GpoName
+New-GPO -Name $GpoAutomaticUpdates
 New-GPO -Name $GpoSSOforRDS
 
 # GpoAutomaticUpdates - RegKeys
