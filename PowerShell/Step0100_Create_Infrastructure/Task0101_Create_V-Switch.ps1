@@ -1,4 +1,4 @@
-CLS
+# Select Switch Type
 $SwitchType = Read-Host "External [e]`nInternal [i] `nPrivate  [p] `n`nSelect a type"
 
 IF ($SwitchType -eq "e"){
