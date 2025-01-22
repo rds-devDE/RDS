@@ -22,7 +22,7 @@ $RegKey = "HKLM\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation"
 $ExtRegKey = "$RegKey\AllowDefaultCredentials"
 # Registry Werte
 $RegName = "1"
-$RegData = "termsrv/connectionbrokerFQDN.domain.de"
+$RegData = "termsrv/connectionbrokerFQDN.domain.de" #Eigenen CB-Server eintragen
 # AllowDefaultCredentials aktivieren (DWORD = 1)
 Set-GPRegistryValue -Name $GpoSSOforRDS -Key $RegKey -ValueName "AllowDefaultCredentials" -Type DWORD -Value 1
 # Neuen Key unter AllowDefaultCredentials erstellen und Servernamen setzen
