@@ -14,6 +14,6 @@ IF ($SwitchType -eq "e"){
     New-VMSwitch -Name "V-Switch-Private" -SwitchType Private 
 }ELSE {
     Clear-Host
-    Write-Host "Keine korrekte Eingabe"
+    Write-Host "Invalid Choice"
     BREAK
 }   
