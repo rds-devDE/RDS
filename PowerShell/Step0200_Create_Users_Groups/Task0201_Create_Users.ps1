@@ -4,6 +4,7 @@ Import-Module ActiveDirectory
 $Anzahl = [int](Read-Host "Anzahl Bots")
 $PasswordLength = [int](Read-Host "Länge Passwort")
 $Bot = [int](Read-Host "Nummer des ersten Bots")
+$domain = Read-Host "Domain"
 
 # Zeichen definieren
 $Buchstaben = 'abcdefghijklmnopqrstuvwxyz'
@@ -39,7 +40,7 @@ for ($i = 1; $i -le $Anzahl; $i++) {
 
     New-ADUser -Name $Name `
                -AccountPassword $SecurePassword `
-               -UserPrincipalName "$Name@domain.de" `
+               -UserPrincipalName "$Name@$domain" `
                -SamAccountName $Name `
                -Enabled $true `
                -PasswordNeverExpires $true `
