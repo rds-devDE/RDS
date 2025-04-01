@@ -18,7 +18,7 @@ $IPv4Adapter = Read-Host "`nType in one of the above"
 $IPv4Address = Read-Host "Address [IPv4]"
 $IPv4Netmask = Read-Host "Netmask [CIDR]"
 $IPv4Gateway = Read-Host "Gateway [IPv4]"
-$IPv4DNS = Read-Host "`nDNS [IPv4]"
+$IPv4DNS = Read-Host "DNS     [IPv4]"
 New-NetIPAddress -InterfaceAlias $IPv4Adapter -IPAddress $IPv4Address -PrefixLength $IPv4Netmask -DefaultGateway $IPv4Gateway
 Set-DnsClientServerAddress -InterfaceAlias $IPv4DNSAdapter -ServerAddresses ($IPv4DNS)
 ipconfig /flushdns
