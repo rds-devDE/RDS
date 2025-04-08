@@ -1,29 +1,22 @@
-# GPOs definieren
-$GpoAutomaticUpdates = "Automatische Windows Updates"
-$GpoSSOforRDS = "SSO fuer RDS"
+# Set GPO Names
+$GpoAutoUp = "Automatische Windows Updates"
+$GpoSSORDS = "SSO fuer RDS"
 
-# GPOs erstellen
-New-GPO -Name $GpoAutomaticUpdates
-New-GPO -Name $GpoSSOforRDS
+# Create GPOs
+New-GPO -Name $GpoAutoUp
+New-GPO -Name $GpoSSORDS
 
-# GpoAutomaticUpdates - RegKeys
-# Registry Pfad
-$RegistryPath = "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU"
-# Automatische Updates aktivieren und tägliche Installation festlegen
-Set-GPRegistryValue -Name $GpoAutomaticUpdates -Key $RegistryPath -ValueName "NoAutoUpdate" -Type DWord -Value 0 
-Set-GPRegistryValue -Name $GpoAutomaticUpdates -Key $RegistryPath -ValueName "AUOptions" -Type DWord -Value 4  # Automatische Updates herunterladen und installieren
-# Installationszeit auf 00:00 Uhr täglich setzen
-Set-GPRegistryValue -Name $GpoAutomaticUpdates -Key $RegistryPath -ValueName "ScheduledInstallDay" -Type DWord -Value 0 # Jeden Tag
-Set-GPRegistryValue -Name $GpoAutomaticUpdates -Key $RegistryPath -ValueName "ScheduledInstallTime" -Type DWord -Value 0 # Uhrzeit: 00:00 Uhr
+# GpoAutoUp
+$RegPathAutoUp = "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU"
+Set-GPRegistryValue -Name $GpoAutoUp -Key $RegPathAutoUp -ValueName "NoAutoUpdate" -Type DWord -Value 0 # Automatic Update active
+Set-GPRegistryValue -Name $GpoAutoUp -Key $RegPathAutoUp -ValueName "AUOptions" -Type DWord -Value 4  # Download and Install
+Set-GPRegistryValue -Name $GpoAutoUp -Key $RegPathAutoUp -ValueName "ScheduledInstallDay" -Type DWord -Value 0 # Every Day
+Set-GPRegistryValue -Name $GpoAutoUp -Key $RegPathAutoUp -ValueName "ScheduledInstallTime" -Type DWord -Value 0 # Time: 00:00
 
-# GpoSSOforRDS - RegKeys
-# Registry Pfade
-$RegKey = "HKLM\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation"
-$ExtRegKey = "$RegKey\AllowDefaultCredentials"
-# Registry Werte
+# GpoSSORDS
+$RegPathSSORDS = "HKLM\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation"
+$RegPathSSORDSExt = "$RegKey\AllowDefaultCredentials"
 $RegName = "1"
-$RegData = "termsrv/connectionbrokerFQDN.domain.de" #Eigenen CB-Server eintragen
-# AllowDefaultCredentials aktivieren (DWORD = 1)
-Set-GPRegistryValue -Name $GpoSSOforRDS -Key $RegKey -ValueName "AllowDefaultCredentials" -Type DWORD -Value 1
-# Neuen Key unter AllowDefaultCredentials erstellen und Servernamen setzen
-Set-GPRegistryValue -Name $GpoSSOforRDS -Key $ExtRegKey -ValueName $RegName -Type String -Value $RegData
+$RegData = "termsrv/connectionbrokerFQDN.domain.de" # FQDN for CB-Server 
+Set-GPRegistryValue -Name $GpoSSORDS -Key $RegPathSSORDS -ValueName "AllowDefaultCredentials" -Type DWORD -Value 1 # Allow Default Credentials
+Set-GPRegistryValue -Name $GpoSSORDS -Key $RegPathSSORDSExt -ValueName $RegName -Type String -Value $RegData # New Key for CB-Server
