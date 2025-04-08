@@ -1,19 +1,20 @@
+# Import Modules
 Import-Module ActiveDirectory
 
-# Anzahl Bots definieren
+# User Input for Bot Creation 
 $Anzahl = [int](Read-Host "Anzahl Bots")
 $PasswordLength = [int](Read-Host "Länge Passwort")
 $Bot = [int](Read-Host "Nummer des ersten Bots")
 $domain = Read-Host "Domain"
 
-# Zeichen definieren
+# Character Sets for Password Generation
 $Buchstaben = 'abcdefghijklmnopqrstuvwxyz'
 $GroBuchstaben = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 $Zahlen = '0123456789'
 $Sonder = '!@#$%&()_+{}:<>?'
 $Zeichen = $Buchstaben + $GroBuchstaben + $Zahlen + $Sonder
 
-# Join jeweils ein Zeichen der verschiedenen Kategoriern und fülle den Rest auf (5 Zeichen) 
+# Password Generation Function
 function Generate-Password {
      $password = -join (
         $Buchstaben[(Get-Random -Minimum 0 -Maximum $Buchstaben.Length)],
@@ -28,14 +29,12 @@ function Generate-Password {
     return $password
 }
 
+
+# Loop to Create Bots
 for ($i = 1; $i -le $Anzahl; $i++) {
-
     $password = Generate-Password
-
     $Name = "Bot" + "{0:D2}" -f $Bot
-
     $Bot = $Bot+1
-
     $SecurePassword = ConvertTo-SecureString $password -AsPlainText -Force
 
     New-ADUser -Name $Name `
