@@ -15,7 +15,7 @@ Set-GPRegistryValue -Name $GpoAutoUp -Key $RegPathAutoUp -ValueName "ScheduledIn
 
 # GpoSSORDS
 $RegPathSSORDS = "HKLM\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation"
-$RegPathSSORDSExt = "$RegKey\AllowDefaultCredentials"
+$RegPathSSORDSExt = "$RegPathSSORDS\AllowDefaultCredentials"
 $RegName = "1"
 $RegData = "termsrv/connectionbrokerFQDN.domain.de" # FQDN for CB-Server 
 Set-GPRegistryValue -Name $GpoSSORDS -Key $RegPathSSORDS -ValueName "AllowDefaultCredentials" -Type DWORD -Value 1 # Allow Default Credentials
